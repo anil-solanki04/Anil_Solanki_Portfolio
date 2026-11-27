@@ -275,13 +275,40 @@ export function filterProjects(list: Project[], filter: ProjectFilter): Project[
   return filter === "all" ? list : list.filter((project) => project.language === filter);
 }
 
-export const education = {
-  degree: "Bachelor of Technology",
-  branch: "Computer Science and Engineering",
-  institution: "Indore Institute of Science and Technology",
-  period: "2024 – 2028",
-  cgpa: "7.6",
+export type EducationEntry = {
+  title: string;
+  subtitle: string | null;
+  institution: string;
+  /** Study years, or null when not supplied. */
+  period: string | null;
+  /** Label and value of the result, e.g. CGPA or Percentage. */
+  result: { label: string; value: string };
 };
+
+/** Newest first. */
+export const education: EducationEntry[] = [
+  {
+    title: "Bachelor of Technology",
+    subtitle: "Computer Science and Engineering",
+    institution: "Indore Institute of Science and Technology",
+    period: "2024 – 2028",
+    result: { label: "CGPA", value: "7.6" },
+  },
+  {
+    title: "Higher Secondary (Class 12)",
+    subtitle: null,
+    institution: "Garha Public Higher Secondary School",
+    period: null,
+    result: { label: "Percentage", value: "86%" },
+  },
+  {
+    title: "High School (Class 10)",
+    subtitle: null,
+    institution: "Garha Public Higher Secondary School",
+    period: null,
+    result: { label: "Percentage", value: "89%" },
+  },
+];
 
 export type Certificate = {
   id: string;
