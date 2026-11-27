@@ -28,3 +28,11 @@ use the editor.
   own key and store it in Secrets.
 - **Secrets.** Lovable manages them. Do not put secret values in the repo.
 <!-- LOVABLE:END -->
+
+## Project rules
+
+- All portfolio content (profile, skills, projects, certificates, nav) lives in `src/data/portfolio.ts`; sections in `src/components/portfolio/` only render it. Why: one place to add repo links, screenshots and certificates.
+- Missing assets are `null` in that file (photo, screenshot, repoUrl, liveUrl, certificate image) and the UI shows an honest "coming soon" state. Why: the owner forbids invented links, screenshots or details.
+- Theme: `dark` class on `<html>` is the default; the inline script in `src/routes/__root.tsx` applies the saved `localStorage.theme`, else the system theme. Colors are tokens in `src/styles.css` (`:root` = light, `.dark` = dark). Why: avoids a theme flash on load.
+- The contact form has no server: `src/lib/contact.ts` validates and builds a mailto link. Why: the owner asked for no pretend backend; swap `buildMailto` for a real send only when one exists.
+- Timed animations (hero typing) need a visible pause button and must not start under prefers-reduced-motion.

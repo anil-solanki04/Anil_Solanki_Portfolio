@@ -27,3 +27,12 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Updating the portfolio content
+
+Everything shown on the site lives in `src/data/portfolio.ts`:
+
+- **Photo, resume link, email, social links**: the `profile` object.
+- **Projects**: add an entry to `projects`. Set `repoUrl` to the real GitHub URL once uploaded (until then the card shows "Repository Coming Soon"), `screenshot` to a real image, and `liveUrl` only for a real deployment.
+- **Certificates**: set `image` on an entry in `certificates` to show the thumbnail and full-size viewer.
+- **Contact form**: it opens the visitor's email app (no server). To send through a form service later, replace the `buildMailto` call in `src/components/portfolio/Contact.tsx` with a request to that service.
